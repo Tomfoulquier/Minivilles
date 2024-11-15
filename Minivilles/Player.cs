@@ -23,6 +23,11 @@ namespace Minivilles
 
         public void BuyCard()
         {
+<<<<<<< HEAD
+=======
+            Pile playerCity = new Pile();
+            playerCity.AddCard()
+>>>>>>> main
 
         }
 
