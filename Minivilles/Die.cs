@@ -9,16 +9,14 @@ namespace Minivilles
     public class Die
     {
         Random rand = new Random();
-        bool doubleDie = false; //utiliser 2 dés ou non
-        public Die() 
+        public Die()
         {
-            
         }
 
-        public int LaunchDie(bool doubledie)
+        public int RollDie(bool doubleDie)
         {
             int result;
-            if (doubledie)
+            if (doubleDie)
             {
                 result = rand.Next(6);
             }

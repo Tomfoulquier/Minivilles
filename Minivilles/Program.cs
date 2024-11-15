@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Minivilles;
+using System;
 
-namespace Minivilles
+namespace MiniVille
 {
-    public class Program
+    class Program
     {
         static void Main(string[] args)
         {
-
+            Game g = new Game();
         }
     }
 }
