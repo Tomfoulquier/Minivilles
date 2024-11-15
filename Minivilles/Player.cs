@@ -23,15 +23,8 @@ namespace Minivilles
 
         public void BuyCard(Pile playerCity,Card card)
         {
-            if (coins < card.price)
-            {
-                Console.WriteLine("Vous n'avez pas assez d'argent pour l'acheter.");
-            }
-            else
-            {
                 playerCity.AddCard(card);
                 coins -= card.price;
-            }
         }
         #endregion
     }
