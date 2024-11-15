@@ -31,6 +31,14 @@ namespace Minivilles
 
             referenceCards = new Pile();
             // A FAIRE : Ajouter les Cards a Pile
+            referenceCards.AddCard();
+            referenceCards.AddCard();
+            referenceCards.AddCard();
+            referenceCards.AddCard();
+            referenceCards.AddCard();
+            referenceCards.AddCard();
+            referenceCards.AddCard();
+            referenceCards.AddCard();
 
             isPlayerTurn = true;
             endGame = false;
