@@ -51,7 +51,8 @@ namespace Minivilles
             isPlayerTurn = true;
             endGame = false;
 
-           
+            listJoueurs[0].playerCity.AddCard(referenceCards[0]);
+            listJoueurs[0].playerCity.AddCard(referenceCards[2]);
 
             while (!endGame) 
             {
@@ -62,8 +63,6 @@ namespace Minivilles
                 {
 
                     resultDie = die.RollDie(false);
-
-                    foreach (Card card in listJoueurs[0].)
 
 
                     isPlayerTurn = false;
