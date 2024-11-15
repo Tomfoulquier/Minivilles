@@ -29,7 +29,7 @@ namespace Minivilles
             }
             else
             {
-                playerCity.AddCard(card)
+                playerCity.AddCard(card);
                 coins -= card.price;
             }
         }
