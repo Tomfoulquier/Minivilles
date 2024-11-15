@@ -61,6 +61,8 @@ namespace Minivilles
 
                     resultDie = die.RollDie(false);
 
+                    
+
 
                     isPlayerTurn = false;
                 
@@ -84,9 +86,9 @@ namespace Minivilles
 
             if(indexPlayer == 0) {  inverseIndexPlayer = 1; } else { inverseIndexPlayer = 0; }
 
-            listJoueurs[indexPlayer].coins += (int.Parse(_effect.Split("")[1])
+            listJoueurs[indexPlayer].coins += (int.Parse(_effect.Split("")[1]));
             
-            if (_effect.Split("")[0] == "1") {  listJoueurs[inverseIndexPlayer].coins -= (int.Parse(_effect.Split("")[1])  }
+            if (_effect.Split("")[0] == "1") { listJoueurs[inverseIndexPlayer].coins -= int.Parse(_effect.Split("")[1]);  }
 
 
         }
