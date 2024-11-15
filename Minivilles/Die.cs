@@ -15,7 +15,6 @@ namespace Minivilles
 
         public int RollDie(bool doubleDie)
         {
-            doubleDie = false;
             int result;
             if (!doubleDie)
             {
