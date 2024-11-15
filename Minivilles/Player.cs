@@ -13,7 +13,7 @@ namespace Minivilles
     {
         #region atribute
         public int coins = 3;
-        Pile playerCity = new Pile();
+        public Pile playerCity = new Pile();
         #endregion
 
         #region methode
