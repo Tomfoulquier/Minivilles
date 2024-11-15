@@ -19,11 +19,17 @@ namespace Minivilles
         public Game()
         {
 
+            listJoueurs = new List<Player>();
+            referenceCards = new Pile();
+            stockCards = new List<int>();
+
             listJoueurs.Add(new Player());
             listJoueurs.Add(new Player());
 
             for (int i = 0; i < 8; i++) 
             {
+
+
 
                 stockCards.Add(6);
 
@@ -42,7 +48,37 @@ namespace Minivilles
             isPlayerTurn = true;
             endGame = false;
 
+            while (!endGame) 
+            {
+
+
+                if (isPlayerTurn) 
+                {
+                
+
+
+                    isPlayerTurn = false;
+                
+                }
+                else 
+                {
+                
+                    
+                    isPlayerTurn = true;
+                
+                }
+            
+            }
+
         }
+
+        public void ApplyEffect(string _effect)
+        {
+
+
+
+        }
+
 
     }
 
