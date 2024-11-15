@@ -19,8 +19,8 @@ namespace Minivilles
         public Game()
         {
 
-            listJoueurs.Add(new Player())
-            listJoueurs.Add(new Player())
+            listJoueurs.Add(new Player());
+            listJoueurs.Add(new Player());
 
             for (int i = 0; i < 8; i++) 
             {
