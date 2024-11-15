@@ -8,5 +8,14 @@ namespace Minivilles
 {
     public class Pile
     {
+        public List<Card> listCards = new List<Card>();
+
+        public void DeleteCard()
+        {
+            return;
+        }
+        public void AddCard()
+        {
+        }
     }
 }
