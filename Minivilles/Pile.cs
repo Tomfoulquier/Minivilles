@@ -13,14 +13,9 @@ namespace Minivilles
         public Pile()
         {
         }
-
-        public void DeleteCard()
+        public void AddCard(Card card)
         {
-
-            return;
-        }
-        public void AddCard()
-        {
+            listCards.Add(card);
             return;
         }
     }
