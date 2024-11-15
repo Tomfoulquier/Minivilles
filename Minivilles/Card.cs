@@ -21,8 +21,6 @@ namespace Minivilles
 
         }
 
-        //efefe
-
     }
 
 }
