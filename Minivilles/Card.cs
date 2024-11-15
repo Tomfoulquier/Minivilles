@@ -8,6 +8,7 @@ namespace Minivilles
 {
     public class Card
     {
+
         public int activationNumber;
         public string effect;
         public int price;
