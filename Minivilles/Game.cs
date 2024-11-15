@@ -72,15 +72,17 @@ namespace Minivilles
 
         }
 
-        public void ApplyEffect(string _effect)
+        public void ApplyEffect(int indexPlayer,  string _effect)
         {
 
-            if (_effect.Split("")[0] = "0") 
-            {
+            int inverseIndexPlayer;
 
-             
+            if(indexPlayer == 0) {  inverseIndexPlayer = 1; } else { inverseIndexPlayer = 0; }
+
+            listJoueurs[indexPlayer].coins += (int.Parse(_effect.Split("")[1])
             
-            }
+            if (_effect.Split("")[0] == "1") {  listJoueurs[inverseIndexPlayer].coins -= (int.Parse(_effect.Split("")[1])  }
+
 
         }
 
