@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace Minivilles
         public Pile referenceCards;
         public bool isPlayerTurn;
         public bool endGame;
+        public Die die;
 
         public Game()
         {
@@ -22,6 +24,7 @@ namespace Minivilles
             listJoueurs = new List<Player>();
             referenceCards = new Pile();
             stockCards = new List<int>();
+            die = new Die();
 
             listJoueurs.Add(new Player());
             listJoueurs.Add(new Player());
@@ -51,10 +54,12 @@ namespace Minivilles
             while (!endGame) 
             {
 
+                int resultDie;
 
                 if (isPlayerTurn) 
                 {
-                
+
+                    resultDie = die.RollDie(false);
 
 
                     isPlayerTurn = false;
