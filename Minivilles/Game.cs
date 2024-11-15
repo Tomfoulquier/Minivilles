@@ -75,7 +75,7 @@ namespace Minivilles
         public void ApplyEffect(string _effect)
         {
 
-            if (_effect.Split("")[0] = 0) 
+            if (_effect.Split("")[0] = "0") 
             {
 
              
