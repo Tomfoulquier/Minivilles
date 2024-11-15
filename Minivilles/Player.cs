@@ -16,24 +16,22 @@ namespace Minivilles
         #endregion
 
         #region methode
-        public Player() 
+        public Player()
         {
             Pile playerCity = new Pile();
         }
 
-        public void BuyCard()
+        public void BuyCard(Pile playerCity,Card card)
         {
-<<<<<<< HEAD
-=======
-            Pile playerCity = new Pile();
-            playerCity.AddCard()
->>>>>>> main
-
-        }
-
-        public void DiceRolling()
-        {
-
+            if (coins < card.price)
+            {
+                Console.WriteLine("Vous n'avez pas assez d'argent pour l'acheter.");
+            }
+            else
+            {
+                playerCity.AddCard(card)
+                coins -= card.price;
+            }
         }
         #endregion
     }
