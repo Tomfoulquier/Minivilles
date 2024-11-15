@@ -16,7 +16,7 @@ namespace Minivilles
         #endregion
 
         #region methode
-        public Player() 
+        public Player()
         {
             Pile playerCity = new Pile();
         }
