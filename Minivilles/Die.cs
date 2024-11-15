@@ -15,8 +15,9 @@ namespace Minivilles
 
         public int RollDie(bool doubleDie)
         {
+            doubleDie = false;
             int result;
-            if (doubleDie)
+            if (!doubleDie)
             {
                 result = rand.Next(6);
             }
