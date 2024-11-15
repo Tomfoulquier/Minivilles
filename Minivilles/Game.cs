@@ -17,7 +17,7 @@ namespace Minivilles
         public bool isPlayerTurn;
         public bool endGame;
         public Die die;
-        public Random random = new Random;
+        public Random random = new Random();
 
         public Game()
         {
@@ -40,9 +40,9 @@ namespace Minivilles
             }
 
             referenceCards = new Pile();
+            referenceCards.AddCard(new Card(2, "0,2", 1, "Boulangerie"));
             referenceCards.AddCard(new Card(1, "0,1", 2, "Champs de blé"));
             referenceCards.AddCard(new Card(1, "0,1", 2, "Ferme"));
-            referenceCards.AddCard(new Card(2, "0,2", 1, "Boulangerie"));
             referenceCards.AddCard(new Card(3, "1,1", 2, "Café"));
             referenceCards.AddCard(new Card(4, "0,3", 2, "Superette"));
             referenceCards.AddCard(new Card(5, "0,1", 2, "Forêt"));
@@ -53,10 +53,10 @@ namespace Minivilles
             endGame = false;
 
             listJoueurs[0].playerCity.AddCard(referenceCards.listCards[0]);
-            listJoueurs[0].playerCity.AddCard(referenceCards.listCards[2]);
+            listJoueurs[0].playerCity.AddCard(referenceCards.listCards[1]);
 
             listJoueurs[1].playerCity.AddCard(referenceCards.listCards[0]);
-            listJoueurs[1].playerCity.AddCard(referenceCards.listCards[2]);
+            listJoueurs[1].playerCity.AddCard(referenceCards.listCards[1]);
 
             while (!endGame) 
             {
@@ -66,16 +66,14 @@ namespace Minivilles
                 if (isPlayerTurn) 
                 {
 
-                    Console.Clear();
                     Console.WriteLine("Appuyez sur entrer pour lancer le dés");
                     Console.ReadLine();
 
                     resultDie = die.RollDie(false);
 
-                    Console.Clear();
-                    Console.WriteLine("Vous avez tirer le {0}", resultDie);
+                    Console.WriteLine("dés tirer : {0}", resultDie);
 
-                    foreach (Card card in referenceCards.listCards) 
+                    foreach (Card card in listJoueurs[0].playerCity.listCards) 
                     {
                     
                         if(card.activationNumber == resultDie) 
@@ -87,28 +85,132 @@ namespace Minivilles
                     
                     }
 
+                    foreach (Card card in listJoueurs[1].playerCity.listCards)
+                    {
+
+                        if (card.activationNumber == resultDie && card.effect.Split(",")[0] == "1")
+                        {
+
+                            ApplyEffect(1, card.effect);
+
+                        }
+
+                    }
+
+
+
                     Console.WriteLine("piece j : " + listJoueurs[0].coins);
                     Console.WriteLine("piece o : " + listJoueurs[1].coins);
 
                     isPlayerTurn = false;
 
                     Console.ReadLine();
-                
+
+                    int ii = 0;
+
+                    Console.WriteLine("0. quitter la boutique");
+                    if (stockCards[0] > 0) { ii++; Console.WriteLine("{0}. [2] Boulangerie - Recevez 2$ - 1$ | STOCK : {1} ", ii, stockCards[0]); }
+                    if (stockCards[1] > 0) { ii++; Console.WriteLine("{0}. [1] Champs de blé - Recevez 1$ - 1$ | STOCK : {1} ", ii, stockCards[1]); }
+                    if (stockCards[2] > 0) { ii++; Console.WriteLine("{0}. [1] Ferme - Recevez 1$ - 2$ | STOCK : {1} ", ii, stockCards[2]); }
+                    if (stockCards[3] > 0) { ii++; Console.WriteLine("{0}. [3] Café - Recevez 1$ du joueur advairse - 2$ | STOCK : {1} ", ii, stockCards[3]); }
+                    if (stockCards[4] > 0) { ii++; Console.WriteLine("{0}. [4] Superette - Recevez 3$ - 2$ | STOCK : {1} ", ii, stockCards[4]); }
+                    if (stockCards[5] > 0) { ii++; Console.WriteLine("{0}. [5] Forêt - Recevez 1$ - 2$ | STOCK : {1} ", ii, stockCards[5]); }
+                    if (stockCards[6] > 0) { ii++; Console.WriteLine("{0}. [5] Restaurant - Recevez 2$ du joueur advairse - 1$ | STOCK : {1} ", ii, stockCards[6]); }
+                    if (stockCards[7] > 0) { ii++; Console.WriteLine("{0}. [6] Stade - Recevez 4$ - 6$ | STOCK : {1} ", ii, stockCards[7]); }
+
+                    int choice = 55;
+
+                    while (choice > ii || choice < 0) 
+                    {
+
+                        choice = int.Parse(Console.ReadLine());
+                        if (choice <= ii && choice >= 0)
+                        {
+
+                            if (listJoueurs[0].coins >= referenceCards.listCards[choice - 1].price && stockCards[choice - 1] > 0 && choice != 0)
+                            {
+
+                                listJoueurs[0].BuyCard(referenceCards.listCards[choice - 1]);
+
+                            }
+                            else if (choice != 0)
+                            {
+
+                                Console.WriteLine("Vous n'avez pas assez d'argent");
+                                choice = 55;
+
+                            }
+
+                        }
+                        else 
+                        {
+
+                            Console.WriteLine("Votre choix n'est pas valide");
+
+                        }
+                    
+                    }
+
+
+
                 }
                 else 
                 {
+                    Console.WriteLine("IA ");
+                    Console.ReadLine();
 
-                    if (random.Next(0, 2)) 
+
+                    resultDie = die.RollDie(false);
+
+                    Console.WriteLine("dés tirer : {0}", resultDie);
+
+                    foreach (Card card in listJoueurs[1].playerCity.listCards)
+                    {
+
+                        if (card.activationNumber == resultDie)
+                        {
+
+                            ApplyEffect(1, card.effect);
+
+                        }
+
+                    }
+
+                    foreach (Card card in listJoueurs[0].playerCity.listCards)
+                    {
+
+                        if (card.activationNumber == resultDie && card.effect.Split(",")[0] == "1")
+                        {
+
+                            ApplyEffect(0, card.effect);
+
+                        }
+
+                    }
+
+                    Console.WriteLine("piece j : " + listJoueurs[0].coins);
+                    Console.WriteLine("piece o : " + listJoueurs[1].coins);
+                    Console.ReadLine();
+
+                    if (random.Next(0, 2) == 1 && listJoueurs[1].coins > 0) 
                     {
                     
                         for (int i = referenceCards.listCards.Count-1; i >= 0; i--) 
                         {
 
-                            if (stockCards[i] > 0 && listJoueurs[1].coins >= referenceCards.listCards[i].price) 
+                            int cardChoosen = random.Next(0, i+1);
+
+                            if (stockCards[cardChoosen] > 0 && listJoueurs[1].coins >= referenceCards.listCards[i].price) 
                             {
 
+                                listJoueurs[1].BuyCard(referenceCards.listCards[cardChoosen]);
+                                stockCards[cardChoosen]--;
+                                Console.WriteLine("Card Buy : " + referenceCards.listCards[cardChoosen].name);
+                                Console.WriteLine(listJoueurs[1].playerCity.listCards.Count);
+                                Console.ReadLine();
 
-                            
+                                break;
+
                             }
                         
                         }
@@ -130,23 +232,35 @@ namespace Minivilles
 
             if(indexPlayer == 0) {  inverseIndexPlayer = 1; } else { inverseIndexPlayer = 0; }
 
-            listJoueurs[indexPlayer].coins += int.Parse(_effect.Split(",")[1]);
-            
-            if (_effect.Split(",")[0] == "1") { listJoueurs[inverseIndexPlayer].coins -= int.Parse(_effect.Split(",")[1]);  }
-
-            if(indexPlayer == 0) 
+            if(_effect.Split(",")[0] == "0") 
             {
 
-                Console.WriteLine("Vous avez gagné {0} pieces", int.Parse(_effect.Split(",")[1]));
+                listJoueurs[indexPlayer].coins += int.Parse(_effect.Split(",")[1]);
+
+            }
+            else 
+            {
+            
+                if(listJoueurs[inverseIndexPlayer].coins > int.Parse(_effect.Split(",")[1]))
+                {
+
+                    listJoueurs[indexPlayer].coins += int.Parse(_effect.Split(",")[1]);
+                    listJoueurs[inverseIndexPlayer].coins -= int.Parse(_effect.Split(",")[1]);
+
+                }
+                else
+                {
+
+                    listJoueurs[indexPlayer].coins += listJoueurs[inverseIndexPlayer].coins;
+                    listJoueurs[inverseIndexPlayer].coins = 0;
+
+                }
             
             }
+           
 
-            if(inverseIndexPlayer == 0 && _effect.Split(",")[0] == "1") 
-            {
 
-                Console.WriteLine("Vous avez perdu {0} pieces", int.Parse(_effect.Split(",")[1]));
 
-            }
             
 
 
