@@ -19,11 +19,11 @@ namespace Minivilles
             int result;
             if (!doubleDie)
             {
-                result = rand.Next(6);
+                result = rand.Next(1,7);
             }
             else
             {
-                result = rand.Next(12);
+                result = rand.Next(1,13);
             }
             return result;
         }
