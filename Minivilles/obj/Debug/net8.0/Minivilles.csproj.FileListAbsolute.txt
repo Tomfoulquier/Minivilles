@@ -1,0 +1,14 @@
+E:\Cours\USRS46_POO\Minivilles\Minivilles\Minivilles\bin\Debug\net8.0\Minivilles.exe
+E:\Cours\USRS46_POO\Minivilles\Minivilles\Minivilles\bin\Debug\net8.0\Minivilles.deps.json
+E:\Cours\USRS46_POO\Minivilles\Minivilles\Minivilles\bin\Debug\net8.0\Minivilles.runtimeconfig.json
+E:\Cours\USRS46_POO\Minivilles\Minivilles\Minivilles\bin\Debug\net8.0\Minivilles.dll
+E:\Cours\USRS46_POO\Minivilles\Minivilles\Minivilles\bin\Debug\net8.0\Minivilles.pdb
+E:\Cours\USRS46_POO\Minivilles\Minivilles\Minivilles\obj\Debug\net8.0\Minivilles.GeneratedMSBuildEditorConfig.editorconfig
+E:\Cours\USRS46_POO\Minivilles\Minivilles\Minivilles\obj\Debug\net8.0\Minivilles.AssemblyInfoInputs.cache
+E:\Cours\USRS46_POO\Minivilles\Minivilles\Minivilles\obj\Debug\net8.0\Minivilles.AssemblyInfo.cs
+E:\Cours\USRS46_POO\Minivilles\Minivilles\Minivilles\obj\Debug\net8.0\Minivilles.csproj.CoreCompileInputs.cache
+E:\Cours\USRS46_POO\Minivilles\Minivilles\Minivilles\obj\Debug\net8.0\Minivilles.dll
+E:\Cours\USRS46_POO\Minivilles\Minivilles\Minivilles\obj\Debug\net8.0\refint\Minivilles.dll
+E:\Cours\USRS46_POO\Minivilles\Minivilles\Minivilles\obj\Debug\net8.0\Minivilles.pdb
+E:\Cours\USRS46_POO\Minivilles\Minivilles\Minivilles\obj\Debug\net8.0\Minivilles.genruntimeconfig.cache
+E:\Cours\USRS46_POO\Minivilles\Minivilles\Minivilles\obj\Debug\net8.0\ref\Minivilles.dll
