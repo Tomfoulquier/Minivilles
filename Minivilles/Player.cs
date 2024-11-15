@@ -21,7 +21,7 @@ namespace Minivilles
         {
         }
 
-        public void BuyCard(Pile playerCity,Card card)
+        public void BuyCard(Card card)
         {
                 playerCity.AddCard(card);
                 coins -= card.price;
