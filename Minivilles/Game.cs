@@ -18,6 +18,7 @@ namespace Minivilles
         public bool endGame;
         public Die die;
         public Random random = new Random();
+        public int choiceDif = 0;
 
         public Game()
         {
@@ -30,13 +31,9 @@ namespace Minivilles
             listJoueurs.Add(new Player());
             listJoueurs.Add(new Player());
 
-            for (int i = 0; i < 8; i++) 
+            for (int i = 0; i < 8; i++)
             {
-
-
-
                 stockCards.Add(6);
-
             }
 
             referenceCards = new Pile();
@@ -58,13 +55,51 @@ namespace Minivilles
             listJoueurs[1].playerCity.AddCard(referenceCards.listCards[0]);
             listJoueurs[1].playerCity.AddCard(referenceCards.listCards[1]);
 
-            while (!endGame) 
+
+
+            Console.WriteLine("MINIVILLE\n");
+
+            Console.WriteLine("Choix de la difficulté\n");
+            Console.WriteLine("1. Facile : Obtenir 10 pieces");
+            Console.WriteLine("2. Moyen : Obtenir 20 pieces");
+            Console.WriteLine("3. Difficile : Obtenir 30 pieces");
+            Console.WriteLine("4. Expert : obtenir un exemplaire de chaque ");
+
+            while (choiceDif < 1 || choiceDif > 4)
+            {
+                choiceDif = int.Parse(Console.ReadLine());
+            }
+
+            while (!endGame)
             {
 
                 int resultDie;
 
-                if (isPlayerTurn) 
+                if (isPlayerTurn)
                 {
+
+                    Console.WriteLine("Tour : Joueur");
+                    Console.WriteLine();
+
+                    Console.Write("Cartes Joueur : ");
+                    foreach (Card card in listJoueurs[0].playerCity.listCards)
+                    {
+
+                        Console.Write(card.name + " ; ");
+
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine();
+
+                    Console.Write("Cartes IA : ");
+                    foreach (Card card in listJoueurs[1].playerCity.listCards)
+                    {
+
+                        Console.Write(card.name + " ; ");
+
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine();
 
                     Console.WriteLine("Appuyez sur entrer pour lancer le dés");
                     Console.ReadLine();
@@ -73,16 +108,16 @@ namespace Minivilles
 
                     Console.WriteLine("dés tirer : {0}", resultDie);
 
-                    foreach (Card card in listJoueurs[0].playerCity.listCards) 
+                    foreach (Card card in listJoueurs[0].playerCity.listCards)
                     {
-                    
-                        if(card.activationNumber == resultDie) 
+
+                        if (card.activationNumber == resultDie)
                         {
 
                             ApplyEffect(0, card.effect);
 
                         }
-                    
+
                     }
 
                     foreach (Card card in listJoueurs[1].playerCity.listCards)
@@ -99,8 +134,8 @@ namespace Minivilles
 
 
 
-                    Console.WriteLine("piece j : " + listJoueurs[0].coins);
-                    Console.WriteLine("piece o : " + listJoueurs[1].coins);
+                    Console.WriteLine("piece Joueur : " + listJoueurs[0].coins);
+                    Console.WriteLine("piece IA : " + listJoueurs[1].coins);
 
                     isPlayerTurn = false;
 
@@ -120,17 +155,22 @@ namespace Minivilles
 
                     int choice = 55;
 
-                    while (choice > ii || choice < 0) 
+                    while (choice < 0 || choice > 8)
                     {
 
+                        Console.WriteLine("");
+                        Console.WriteLine("Quelle carte ?");
                         choice = int.Parse(Console.ReadLine());
-                        if (choice <= ii && choice >= 0)
+
+                        if (choice >= 1 && choice <= 8)
                         {
 
                             if (listJoueurs[0].coins >= referenceCards.listCards[choice - 1].price && stockCards[choice - 1] > 0 && choice != 0)
                             {
 
                                 listJoueurs[0].BuyCard(referenceCards.listCards[choice - 1]);
+                                Console.WriteLine("Carte Achetée");
+                                stockCards[choice - 1]--;
 
                             }
                             else if (choice != 0)
@@ -140,23 +180,36 @@ namespace Minivilles
                                 choice = 55;
 
                             }
+                            else
+                            {
 
+                                Console.WriteLine("Carte Acheté");
+
+                            }
                         }
-                        else 
+                        else if (choice == 0)
                         {
 
-                            Console.WriteLine("Votre choix n'est pas valide");
+
 
                         }
-                    
+                        else
+                        {
+
+                            Console.WriteLine("Choix invalide");
+                            choice = 55;
+
+                        }
+
+
+
                     }
-
-
+                    Console.WriteLine();
 
                 }
-                else 
+                else
                 {
-                    Console.WriteLine("IA ");
+                    Console.WriteLine("Tour : IA ");
                     Console.ReadLine();
 
 
@@ -188,19 +241,19 @@ namespace Minivilles
 
                     }
 
-                    Console.WriteLine("piece j : " + listJoueurs[0].coins);
-                    Console.WriteLine("piece o : " + listJoueurs[1].coins);
+                    Console.WriteLine("piece Joueur : " + listJoueurs[0].coins);
+                    Console.WriteLine("piece IA : " + listJoueurs[1].coins);
                     Console.ReadLine();
 
-                    if (random.Next(0, 2) == 1 && listJoueurs[1].coins > 0) 
+                    if (random.Next(0, 2) == 1 && listJoueurs[1].coins > 0)
                     {
-                    
-                        for (int i = referenceCards.listCards.Count-1; i >= 0; i--) 
+
+                        for (int i = referenceCards.listCards.Count - 1; i >= 0; i--)
                         {
 
-                            int cardChoosen = random.Next(0, i+1);
+                            int cardChoosen = random.Next(0, i + 1);
 
-                            if (stockCards[cardChoosen] > 0 && listJoueurs[1].coins >= referenceCards.listCards[i].price) 
+                            if (stockCards[cardChoosen] > 0 && listJoueurs[1].coins >= referenceCards.listCards[i].price)
                             {
 
                                 listJoueurs[1].BuyCard(referenceCards.listCards[cardChoosen]);
@@ -212,36 +265,137 @@ namespace Minivilles
                                 break;
 
                             }
-                        
+
                         }
-                    
+
                     }
-                    
+
                     isPlayerTurn = true;
-                
+
                 }
-            
+
+                switch (choiceDif)
+                {
+
+                    case 1:
+
+                        if (listJoueurs[0].coins >= 10 || listJoueurs[1].coins >= 10)
+                        {
+
+                            endGame = true;
+
+
+                        }
+
+                        break;
+
+                    case 2:
+
+
+                        if (listJoueurs[0].coins >= 20 || listJoueurs[1].coins >= 20)
+                        {
+
+                            endGame = true;
+
+                        }
+
+                        break;
+
+                    case 3:
+
+
+                        if (listJoueurs[0].coins >= 30 || listJoueurs[1].coins >= 30)
+                        {
+
+                            endGame = true;
+
+                        }
+
+                        break;
+
+                    case 4:
+
+                        int cardCounterPlayer = 0;
+                        int cardCounterIA = 0;
+                        for (int i = 0; i < referenceCards.listCards.Count; i++)
+                        {
+
+                            if (listJoueurs[0].playerCity.listCards.Contains(referenceCards.listCards[i]))
+                            {
+
+                                cardCounterPlayer++;
+
+                            }
+
+                            if (listJoueurs[1].playerCity.listCards.Contains(referenceCards.listCards[i]))
+                            {
+
+                                cardCounterIA++;
+
+                            }
+
+                        }
+
+                        if ((cardCounterPlayer == 8 && listJoueurs[0].coins == 20) || (cardCounterIA == 8 && listJoueurs[1].coins == 20))
+                        {
+
+                            endGame |= true;
+
+                            if (cardCounterPlayer == 8)
+                            {
+                                Console.WriteLine("Vous avez gagné !!!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Vous avez perdu, l'ordi a gagné !!!");
+                            }
+
+                        }
+
+                        if (choiceDif != 4)
+                        {
+                            if (listJoueurs[0].coins > listJoueurs[1].coins)
+                            {
+                                Console.WriteLine("Vous avez gagné !!!");
+                            }
+                            else if (listJoueurs[0].coins < listJoueurs[1].coins)
+                            {
+                                Console.WriteLine("Vous avez perdu, l'ordi a gagné !!!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Égalité !");
+                            }
+                        }
+
+                        break;
+
+                }
+
+
+
             }
+
 
         }
 
-        public void ApplyEffect(int indexPlayer,  string _effect)
+        public void ApplyEffect(int indexPlayer, string _effect)
         {
 
             int inverseIndexPlayer;
 
-            if(indexPlayer == 0) {  inverseIndexPlayer = 1; } else { inverseIndexPlayer = 0; }
+            if (indexPlayer == 0) { inverseIndexPlayer = 1; } else { inverseIndexPlayer = 0; }
 
-            if(_effect.Split(",")[0] == "0") 
+            if (_effect.Split(",")[0] == "0")
             {
 
                 listJoueurs[indexPlayer].coins += int.Parse(_effect.Split(",")[1]);
 
             }
-            else 
+            else
             {
-            
-                if(listJoueurs[inverseIndexPlayer].coins > int.Parse(_effect.Split(",")[1]))
+
+                if (listJoueurs[inverseIndexPlayer].coins > int.Parse(_effect.Split(",")[1]))
                 {
 
                     listJoueurs[indexPlayer].coins += int.Parse(_effect.Split(",")[1]);
@@ -255,13 +409,13 @@ namespace Minivilles
                     listJoueurs[inverseIndexPlayer].coins = 0;
 
                 }
-            
+
             }
-           
 
 
 
-            
+
+
 
 
         }
