@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Cours\\USRS46_POO\\Minivilles\\Minivilles\\Minivilles\\Minivilles.csproj": {}
+    "C:\\Users\\quent\\Documents\\GitHub\\Minivilles\\Minivilles\\Minivilles.csproj": {}
   },
   "projects": {
-    "E:\\Cours\\USRS46_POO\\Minivilles\\Minivilles\\Minivilles\\Minivilles.csproj": {
+    "C:\\Users\\quent\\Documents\\GitHub\\Minivilles\\Minivilles\\Minivilles.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Cours\\USRS46_POO\\Minivilles\\Minivilles\\Minivilles\\Minivilles.csproj",
+        "projectUniqueName": "C:\\Users\\quent\\Documents\\GitHub\\Minivilles\\Minivilles\\Minivilles.csproj",
         "projectName": "Minivilles",
-        "projectPath": "E:\\Cours\\USRS46_POO\\Minivilles\\Minivilles\\Minivilles\\Minivilles.csproj",
-        "packagesPath": "C:\\Users\\foulq\\.nuget\\packages\\",
-        "outputPath": "E:\\Cours\\USRS46_POO\\Minivilles\\Minivilles\\Minivilles\\obj\\",
+        "projectPath": "C:\\Users\\quent\\Documents\\GitHub\\Minivilles\\Minivilles\\Minivilles.csproj",
+        "packagesPath": "C:\\Users\\quent\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\quent\\Documents\\GitHub\\Minivilles\\Minivilles\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\foulq\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\quent\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,11 +34,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -59,12 +50,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -32,11 +32,7 @@ namespace Minivilles
 
             for (int i = 0; i < 8; i++) 
             {
-
-
-
                 stockCards.Add(6);
-
             }
 
             referenceCards = new Pile();
@@ -118,15 +114,20 @@ namespace Minivilles
                     if (stockCards[6] > 0) { ii++; Console.WriteLine("{0}. [5] Restaurant - Recevez 2$ du joueur advairse - 1$ | STOCK : {1} ", ii, stockCards[6]); }
                     if (stockCards[7] > 0) { ii++; Console.WriteLine("{0}. [6] Stade - Recevez 4$ - 6$ | STOCK : {1} ", ii, stockCards[7]); }
 
-                    int choice = 55;
+                    int choice = "ee";
 
-                    while (choice > ii || choice < 0) 
+                    while (choice != "0") 
                     {
-
-                        choice = int.Parse(Console.ReadLine());
-                        if (choice <= ii && choice >= 0)
+                        if(!int.TryParse(Console.ReadLine(), out choice))
                         {
-
+                            Console.WriteLine("Choix invalide");
+                            continue;
+                        }
+                        if (choice < 0 || choice > ii)
+                        {
+                            Console.WriteLine("Choix invalide");
+                            continue;
+                        }
                             if (listJoueurs[0].coins >= referenceCards.listCards[choice - 1].price && stockCards[choice - 1] > 0 && choice != 0)
                             {
 
@@ -140,18 +141,7 @@ namespace Minivilles
                                 choice = 55;
 
                             }
-
-                        }
-                        else 
-                        {
-
-                            Console.WriteLine("Votre choix n'est pas valide");
-
-                        }
-                    
                     }
-
-
 
                 }
                 else 
