@@ -54,6 +54,9 @@ namespace Minivilles
             listJoueurs[1].playerCity.AddCard(referenceCards.listCards[0]);
             listJoueurs[1].playerCity.AddCard(referenceCards.listCards[1]);
 
+            Console.WriteLine("MINIVILLE");
+            Console.WriteLine();
+
             while (!endGame) 
             {
 
@@ -61,6 +64,29 @@ namespace Minivilles
 
                 if (isPlayerTurn) 
                 {
+
+                    Console.WriteLine("Tour : Joueur");
+                    Console.WriteLine();
+
+                    Console.Write("Cartes Joueur : ");
+                    foreach ( Card card in listJoueurs[0].playerCity.listCards)
+                    {
+
+                        Console.Write(card.name + " ; ");
+
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine();
+
+                    Console.Write("Cartes IA : ");
+                    foreach ( Card card in listJoueurs[1].playerCity.listCards)
+                    {
+
+                        Console.Write(card.name + " ; ");
+
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine();
 
                     Console.WriteLine("Appuyez sur entrer pour lancer le dés");
                     Console.ReadLine();
@@ -95,8 +121,8 @@ namespace Minivilles
 
 
 
-                    Console.WriteLine("piece j : " + listJoueurs[0].coins);
-                    Console.WriteLine("piece o : " + listJoueurs[1].coins);
+                    Console.WriteLine("piece Joueur : " + listJoueurs[0].coins);
+                    Console.WriteLine("piece IA : " + listJoueurs[1].coins);
 
                     isPlayerTurn = false;
 
@@ -116,22 +142,22 @@ namespace Minivilles
 
                     int choice = 55;
 
-                    while (choice != 0) 
+                    while (choice < 0 || choice > 8) 
                     {
-                        if(!int.TryParse(Console.ReadLine(), out choice))
+
+                        Console.WriteLine("");
+                        Console.WriteLine("Quelle carte ?");
+                        choice = int.Parse(Console.ReadLine());
+
+                        if (choice >= 1 && choice <= 8)
                         {
-                            Console.WriteLine("Choix invalide");
-                            continue;
-                        }
-                        if (choice < 0 || choice > ii)
-                        {
-                            Console.WriteLine("Choix invalide");
-                            continue;
-                        }
+
                             if (listJoueurs[0].coins >= referenceCards.listCards[choice - 1].price && stockCards[choice - 1] > 0 && choice != 0)
                             {
 
                                 listJoueurs[0].BuyCard(referenceCards.listCards[choice - 1]);
+                                Console.WriteLine("Carte Achetée");
+                                stockCards[choice - 1]--;
 
                             }
                             else if (choice != 0)
@@ -141,12 +167,36 @@ namespace Minivilles
                                 choice = 55;
 
                             }
+                            else
+                            {
+
+                                Console.WriteLine("Carte Acheté");
+
+                            }
+                        }
+                        else if(choice == 0)
+                        {
+
+                            
+
+                        }
+                        else 
+                        {
+
+                            Console.WriteLine("Choix invalide");
+                            choice = 55;
+
+                        }
+
+
+
                     }
+                    Console.WriteLine();
 
                 }
                 else 
                 {
-                    Console.WriteLine("IA ");
+                    Console.WriteLine("Tour : IA ");
                     Console.ReadLine();
 
 
@@ -178,8 +228,8 @@ namespace Minivilles
 
                     }
 
-                    Console.WriteLine("piece j : " + listJoueurs[0].coins);
-                    Console.WriteLine("piece o : " + listJoueurs[1].coins);
+                    Console.WriteLine("piece Joueur : " + listJoueurs[0].coins);
+                    Console.WriteLine("piece IA : " + listJoueurs[1].coins);
                     Console.ReadLine();
 
                     if (random.Next(0, 2) == 1 && listJoueurs[1].coins > 0) 
