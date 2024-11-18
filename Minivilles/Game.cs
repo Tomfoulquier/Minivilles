@@ -114,9 +114,9 @@ namespace Minivilles
                     if (stockCards[6] > 0) { ii++; Console.WriteLine("{0}. [5] Restaurant - Recevez 2$ du joueur advairse - 1$ | STOCK : {1} ", ii, stockCards[6]); }
                     if (stockCards[7] > 0) { ii++; Console.WriteLine("{0}. [6] Stade - Recevez 4$ - 6$ | STOCK : {1} ", ii, stockCards[7]); }
 
-                    int choice = "ee";
+                    int choice = 55;
 
-                    while (choice != "0") 
+                    while (choice != 0) 
                     {
                         if(!int.TryParse(Console.ReadLine(), out choice))
                         {
