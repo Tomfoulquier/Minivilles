@@ -54,8 +54,20 @@ namespace Minivilles
             listJoueurs[1].playerCity.AddCard(referenceCards.listCards[0]);
             listJoueurs[1].playerCity.AddCard(referenceCards.listCards[1]);
 
-            Console.WriteLine("MINIVILLE");
-            Console.WriteLine();
+            int choixDif = 0 ;
+
+            Console.WriteLine("MINIVILLE\n");
+
+            Console.WriteLine("Choix de la difficulté\n");
+            Console.WriteLine("1. Facile : Obtenir 10 pieces");
+            Console.WriteLine("2. Moyen : Obtenir 20 pieces");
+            Console.WriteLine("3. Difficile : Obtenir 30 pieces");
+            Console.WriteLine("4. Expert : obtenir un exemplaire de chaque ");
+
+            while (choixDif < 1 || choixDif > 4)
+            {
+                choixDif = int.Parse(Console.ReadLine());
+            }
 
             while (!endGame) 
             {
